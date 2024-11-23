@@ -35,21 +35,19 @@ let appointmentSchema = new mongoose.Schema({
     }
 });
 
-// Definición del esquema de nuestra colección
-let physioSchema = new mongoose.Schema({
+let recordSchema = new mongoose.Schema({
     patient: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Patient',
-        require: true
+        required: true
     },
     medicalRecord: {
         type: String,
-        required: false,
+        required: false,    
         maxlength: 1000
     },
     appointments: [appointmentSchema]
 });
 
-// Asociación con el modelo (colección contactos)
-let Physio = mongoose.model('records', physioSchema);
-module.exports = Physio;
+let Record = mongoose.model('records', recordSchema);
+module.exports = Record;
